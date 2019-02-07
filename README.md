@@ -17,7 +17,16 @@ Table of Contents
      * ABR.py          --- ```your ABR algorithm```
      * fixed_env.py    --- ```SIM code simulates live streaming player download, play, card, skip frame, etc```
      * load_trace.py   --- ```load trace to memory```
-# SIM ENV
+# SIM Env
+* Info: The emulator simulates the logic function of a live video player，which mainly simulates downloading video frames and video frames playing in different network environments.
+
+* Input :
+      1.Frame trace focuses on the dynamics of analog video sources. See the Dataset for details.
+      2.Network trace focuses on the dynamics of the simulated network. See the Dataset for details.
+      3.ABR algorithm decision, that is rate and target buffer size
+      
+* Output: The included indicators are: physical time, current download frame, current play time, client buffer size, and so on.Please see the table below for details.
+
 # Online
 * Setting
     * video trace setting:     
