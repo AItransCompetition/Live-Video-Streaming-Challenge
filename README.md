@@ -4,9 +4,9 @@ Table of Contents
    * [INFO]()
    * [Architecture]()
    
-# INFO
+# Architecture
 * Live-Video-Streaming-Challenge (ACM MM 2019 Grand Challenge)
-* ![Image text](https://github.com/NGnetLab/LiveStreamingDemo/blob/master/figure_1.png)
+* ![Image text](https://github.com/NGnetLab/Live-Video-Streaming-Challenge/blob/master/幻灯片1.gif)
 * Document description:
      * demo.py         --- ```An SDK to call the SIM, and you will fill your algorithm in it. ```
      * video_size_0    --- ```video trace (low_bitrate)```
