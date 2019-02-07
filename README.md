@@ -87,6 +87,8 @@ Table of Contents
                plt.pause(0.01)
          ```
 # ABR
+* The participant should submit your ABR algorithm.
+* The code must obey the demo sample.
 # Submit
 * for detail info, Please vist the submit.
 # DataSet
