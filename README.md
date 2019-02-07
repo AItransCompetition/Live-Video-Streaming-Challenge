@@ -26,7 +26,8 @@ Table of Contents
       3.ABR algorithm decision, that is rate and target buffer size
       
 * Output: The included indicators are: physical time, current download frame, current play time, client buffer size, and so on.Please see the table below for details.
-        |   params   | params description |  sample    |
+
+        |   params           | params description                       |  sample    |
         |--------------------|------------------------------------------|------------|
         | time(s)            | physical time                            |   0.46(s)  |
         | time_interval(s)   | duration in this cycle                   |   0.012(s) |  
@@ -36,6 +37,9 @@ Table of Contents
         | buffer_size(s)     | The buffer size time length              |   1.26(s)  |
         | play_time_len(s)   | The time length of playing in this cycle |   0.012(s) |
         | end_delay(s)       | Current end-to-to delay                  |   1.31(s)  |
+        | cdn_newest_id      | Cdn the newest frame id                  |   85       |
+        | download_id        | Download frame id                        |   41       |
+        | cdn_has_frame      | cdn cumulative frame info                |   1.31(s)  |
         | decision_flag      | Gop boundary flag or I frame flag        |   False    |
         | buffer_flag        | Whether the player is buffering          |   False    |
         | cdn_rebuf_flag     | Whether the cdn is rebuf                 |   False    |
