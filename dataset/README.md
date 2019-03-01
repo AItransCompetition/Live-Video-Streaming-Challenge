@@ -1,26 +1,24 @@
-Table of Contents
-=================
+# ACM Multimedia 2019 Live Video Stremaing Grand Challenge 
+## Dataset
+There are two datasets provided for this grand challenge. 
 
-   * [Data Setting]()
-   * [Video Trace]()
-   * [Network Trace]()
-# Data Setting Structure 
-* ![Image text](https://github.com/NGnetLab/Live-Video-Streaming-Challenge/blob/master/frame.png)
-# Video Trace(Frame Trace) 
-* This Trace contains the time and size of each frame captured on the transcoding server and CDN to reach the CDN. 
-* Video trace format   
-   
-        |   Time(s)  | frame_data_size(b) |  is_I_flag |
-        |------------|--------------------|------------|
-        | 22.1131    | 321312             |   1        |  
-* Notice: 
-    * CHUNK or GOP is composed of an I frame and an infinite number of P frames, and the bit rate must be switched only on I frame.
-    * CHUNK or GOP coding structure is I/P/P/P/P/P/ 
-    * Is_I_flag = 1 means I frame, Is_I_flag = 0 means P frame.
-# Network Trace
-* The network information of some mobile phones in wifi and LTE is collected, mainly simulating the network status under strong network, medium network and weak network
-* Network trace Format:   
-   
-        |Time(s)  | throughput(kpbs) | 
-        |---------|------------------|
-        |20.5     | 1.312            | 
+### Video Trace
+
+This dataset contains frame-level traces of six video sequences encoded with IPPP frame structure.  Traces for each video sequence is stored under a subdirectory.  There are four representations for each video sequence.  The trace for each representation is stored in the files `frame_trace_0` to `frame_trace_4`. 
+
+The traces are stored in text format, with each line corresponds to a frame in the representation of the video.  A line contains three numbers:
+
+- The first floating point number corresponds to the timestamp of the video frame.
+- The second floating point number correponds to the size of the video frame, in bits.
+- The third integer, is either `1` or `0`, and is a flag that indicates if the frame is an I-frame (if `1`) or a P-frame (if `0`).
+
+The client can only switch to a different representation on an I-frame.
+
+### Network Trace
+
+Four network traces are provided.  The network traces corresponds to measured throughput under different network conditions using WiFi and LTE.  The traces are named `fixed`, `low`, `medium`, `high` respectively.  Each network trace is a text file containing multiple lines.  Each line contains two floating point numbers:
+
+- The first corresponds to the timestamp in seconds.
+- The second corresponds to the measured throughput in kbps.
+
+These dataset are read and processed in the file `fixed_env.py`. 
