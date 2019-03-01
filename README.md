@@ -45,61 +45,55 @@ The simulator output the following:
 | cdn_rebuf_flag     | Whether the cdn is rebuf                 |   False    |
 | end_of_video       | Whether the end of video                 |   False    |
 
-## Running The Simulator
+## Running the Simulator
 
 To run the simulator, you execute
 
 ```
-python online.py
+python run.py
 ```
 
 The given default code should produce something like the following:
 
 ```
-video count 0 1182.2642188716964
-video count 1 1377.7223845567382
-video count 2 2205.3576390914172
-video count 3 1563.6229626338486
-video count 4 1005.8552370641194
-video count 5 1730.894881578582
-video count 6 1742.591282427159
-video count 7 1742.9341512235237
-video count 8 -1160.3554885566875
-video count 9 754.6778329758246
-video count 10 2604.537383217133
-video count 11 1526.3693699344235
-video count 12 1738.4296243574768
-video count 13 1632.1525894295157
-video count 14 103.31676372570564
-video count 15 -134.73628719562478
-video count 16 1503.0123339929692
-video count 17 697.5516669070091
-video count 18 1376.166009667083
-video count 19 -749.3520074196668
+run 1 1182.2642188716964
+run 2 1377.7223845567382
+run 3 2205.3576390914172
+run 4 1563.6229626338486
+run 5 1005.8552370641194
+run 6 1730.894881578582
+run 7 1742.591282427159
+run 8 1742.9341512235237
+run 9 -1160.3554885566875
+run 10 754.6778329758246
+run 11 2604.537383217133
+run 12 1526.3693699344235
+run 13 1738.4296243574768
+run 14 1632.1525894295157
+run 15 103.31676372570564
+run 16 -134.73628719562478
+run 17 1503.0123339929692
+run 18 697.5516669070091
+run 19 1376.166009667083
+run 20 -749.3520074196668
 22.44301254848225
 ```
 
-        
-# Online
-* Setting
-    * video trace setting:     
-        
-                   13 video_size_file = './video_size_'      #video trace path setting,
-                   
-    * network trace setting:
-    
-                   12 TRAIN_TRACES = './train_sim_traces/'   #train trace path setting, 
-                   
-    * log setting
-        * the log is used to debug the code. you can set you log file path:
+The output above shows the resulting QoE value for each of the 20 runs, each using a different network trace.  The last line is the sum of the QoE for all 20 runs, scaled down by 1000.
 
-                   14 LogFile_Path = "./log/"                #log file trace path setting, 
-        
-        * if you are debugging your code, you can let the DEBUG = True.
-        * if you are trainning your model, consider the I/O, advise you let the DEBUG = False
-    * plot setting
-        * if you want to Debug the code, the Draw = True, the image will let you know all kinds of indicators
-        * ![Image text](https://github.com/NGnetLab/LiveStreamingDemo/blob/master/figure_1.png)
+## Configuring the Simulator
+
+Participants can configure the simulator by editing `run.py` and set the following parameters.
+
+* To change the video trace used in the simulation, you can change the variable `VIDEO_TRACE`.  The default `VIDEO_TRACE` is set to `AsianCup_China_Uzbekistan`.  Other possibilities are: `Fengtimo_2018_11_3`, `YYF_2018_08_12`, `game`, `room`, and `sports`.
+
+* To change the network trace used in the simulation, you can change the variable `NETWORK_TRACE`.  The default `NETWORK_TRACE` can be set to `fixed`, `high`, `medium`, or `low`.
+
+* The simulator can produce detailed log files for debugging.  To turn this on, set the variable `DEBUG` to `True`.  By default, the logs will be written to a sub-directory called `log`.  This log directory can be changed by setting the `LOG_FILE_PATH` variable.  Note that you may want to set `DEBUG` to `False` if you are training an AI model as large volume of data may be written to disk when logging is on.
+
+* You can set the variable `DRAW` to `True` to ask the simulator to output a plot of the downloaded bitrate, buffer occupancy, and network throughput.  An example plot is shown below.  
+                
+![Image text](https://github.com/NGnetLab/LiveStreamingDemo/blob/master/figure_1.png)
 
         ```python
            if DRAW:
@@ -121,10 +115,3 @@ video count 19 -749.3520074196668
                plt.draw()
                plt.pause(0.01)
          ```
-# ABR
-* The participant should submit your ABR algorithm.
-* The code must obey the demo sample.
-# Submit
-* for detail info, Please vist the submit.
-# DataSet
-* for detail info, Please vist the Dataset.
