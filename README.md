@@ -44,6 +44,41 @@ The simulator output the following:
 | buffer_flag        | Whether the player is buffering          |   False    |
 | cdn_rebuf_flag     | Whether the cdn is rebuf                 |   False    |
 | end_of_video       | Whether the end of video                 |   False    |
+
+## Running The Simulator
+
+To run the simulator, you execute
+
+```
+python online.py
+```
+
+The given default code should produce something like the following:
+
+```
+video count 0 1182.2642188716964
+video count 1 1377.7223845567382
+video count 2 2205.3576390914172
+video count 3 1563.6229626338486
+video count 4 1005.8552370641194
+video count 5 1730.894881578582
+video count 6 1742.591282427159
+video count 7 1742.9341512235237
+video count 8 -1160.3554885566875
+video count 9 754.6778329758246
+video count 10 2604.537383217133
+video count 11 1526.3693699344235
+video count 12 1738.4296243574768
+video count 13 1632.1525894295157
+video count 14 103.31676372570564
+video count 15 -134.73628719562478
+video count 16 1503.0123339929692
+video count 17 697.5516669070091
+video count 18 1376.166009667083
+video count 19 -749.3520074196668
+22.44301254848225
+```
+
         
 # Online
 * Setting
