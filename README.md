@@ -8,7 +8,7 @@ This repository contains the simulator code being used for ACM Multimedia 2019 L
 
 The simulator contains the following files:
 
-* `online.py` : An SDK to call the SIM and ABR
+* `run.py` : An SDK to call the SIM and ABR
 * `ABR.py` : your ABR algorithm
 * `fixed_env.py` : SIM code simulates live streaming player download, play, card, skip frame, etc
 * `load_trace.py` : load trace to memory
@@ -45,6 +45,10 @@ The simulator output the following:
 | cdn_rebuf_flag     | Whether the cdn is rebuf                 |   False    |
 | end_of_video       | Whether the end of video                 |   False    |
 
+## Requirement
+
+You will need Python 3 to run the simulator.
+
 ## Running the Simulator
 
 To run the simulator, you execute
@@ -56,30 +60,30 @@ python run.py
 The given default code should produce something like the following:
 
 ```
-run 1 1182.2642188716964
-run 2 1377.7223845567382
-run 3 2205.3576390914172
-run 4 1563.6229626338486
-run 5 1005.8552370641194
-run 6 1730.894881578582
-run 7 1742.591282427159
-run 8 1742.9341512235237
-run 9 -1160.3554885566875
-run 10 754.6778329758246
-run 11 2604.537383217133
-run 12 1526.3693699344235
-run 13 1738.4296243574768
-run 14 1632.1525894295157
-run 15 103.31676372570564
-run 16 -134.73628719562478
-run 17 1503.0123339929692
-run 18 697.5516669070091
-run 19 1376.166009667083
-run 20 -749.3520074196668
-22.44301254848225
+network trace 1 -1160.3892885566877
+network trace 2 754.6778329758246
+network trace 3 1563.6019626338486
+network trace 4 -134.73628719562478
+network trace 5 697.5516669070091
+network trace 6 -749.3520074196668
+network trace 7 1632.1595894295158
+network trace 8 1730.894881578582
+network trace 9 1742.9131512235235
+network trace 10 1377.708384556738
+network trace 11 2604.5443832171327
+network trace 12 1503.0123339929692
+network trace 13 1182.3120188716962
+network trace 14 103.31676372570564
+network trace 15 1738.4296243574768
+network trace 16 1376.159009667083
+network trace 17 1742.6122824271592
+network trace 18 1005.8552370641194
+network trace 19 1526.3693699344235
+network trace 20 2205.3716390914174
+1068.7148832610592
 ```
 
-The output above shows the resulting QoE value for each of the 20 runs, each using a different network trace.  The last line is the sum of the QoE for all 20 runs, scaled down by 1000.
+The output above shows the resulting QoE value for each of the 20 runs, each using a different network trace.  The last line shows the average QoE for all 20 runs.
 
 ## Configuring the Simulator
 
