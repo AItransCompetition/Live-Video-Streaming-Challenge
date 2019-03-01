@@ -1,49 +1,49 @@
-Table of Contents
-=================
+# ACM Multimedia 2019 Grand Challenge: Live Video Streaming
 
-   * [Architecture]()
-   * [SIM ENV]()
-   * [Online]() 
-   * [ABR]()
-   * [Submit]()
-   * [Dataset]()
-   
-# Architecture
-* Live-Video-Streaming-Challenge (ACM MM 2019 Grand Challenge)
-* ![Image text](https://github.com/NGnetLab/Live-Video-Streaming-Challenge/blob/master/幻灯片1.gif)
-* Document description:
-     * online.py       --- ```An SDK to call the SIM and ABR ```
-     * dataset         --- ```network trace and video trace
-     * ABR.py          --- ```your ABR algorithm```
-     * fixed_env.py    --- ```SIM code simulates live streaming player download, play, card, skip frame, etc```
-     * load_trace.py   --- ```load trace to memory```
-# SIM Env
-* Info: The emulator simulates the logic function of a live video player，which mainly simulates downloading video frames and video frames playing in different network environments.
+This repository contains the simulator code being used for ACM Multimedia 2019 Live Video Streaming.  The simulator is a frame-level DASH video streaming simulator with a pluggable client module for bitrate control and latency control.
+
+## Files
+
+![Image text](https://github.com/NGnetLab/Live-Video-Streaming-Challenge/blob/master/幻灯片1.gif)
+
+The simulator contains the following files:
+
+* `online.py` : An SDK to call the SIM and ABR
+* `ABR.py` : your ABR algorithm
+* `fixed_env.py` : SIM code simulates live streaming player download, play, card, skip frame, etc
+* `load_trace.py` : load trace to memory
+
+The folder `dataset` contains the network traces and video traces.  Please see the README.md file in the dataset directory for decsription of the dataset.
+
+# The Simulator
+
+The simulator simulates a live video player，including downloading and playback of video frames.  It reads as inputs:
+
+1. A video trace, which contains the size of each video frame in a video file.
+2. A network trace, which contains the network throughput at each time instance.
+3. The bitrate control and latency control algorithm provided by participant.
+
 ![Image text](https://github.com/NGnetLab/Live-Video-Streaming-Challenge/blob/master/frame.png)    
-* Input :
-      1.Frame trace focuses on the dynamics of analog video sources. See the Dataset for details.
-      2.Network trace focuses on the dynamics of the simulated network. See the Dataset for details.
-      3.ABR algorithm decision, that is rate and target buffer size
-      
-* Output: The included indicators are: physical time, current download frame, current play time, client buffer size, and so on.Please see the table below for details.
 
-        |   params           | params description                       |  sample    |
-        |--------------------|------------------------------------------|------------|
-        | time(s)            | physical time                            |   0.46(s)  |
-        | time_interval(s)   | duration in this cycle                   |   0.012(s) |  
-        | send_data_size(bit)| The data size downloaded in this cycle   |   14871(b) |
-        | frame_time_len(s)  | The time length of the frame currently   |   0.04(s)  |
-        | rebuf(s)           | The rebuf time of this cycle             |   0.00(s)  |
-        | buffer_size(s)     | The buffer size time length              |   1.26(s)  |
-        | play_time_len(s)   | The time length of playing in this cycle |   0.012(s) |
-        | end_delay(s)       | Current end-to-to delay                  |   1.31(s)  |
-        | cdn_newest_id      | Cdn the newest frame id                  |   85       |
-        | download_id        | Download frame id                        |   41       |
-        | cdn_has_frame      | cdn cumulative frame info                |   1.31(s)  |
-        | decision_flag      | Gop boundary flag or I frame flag        |   False    |
-        | buffer_flag        | Whether the player is buffering          |   False    |
-        | cdn_rebuf_flag     | Whether the cdn is rebuf                 |   False    |
-        | end_of_video       | Whether the end of video                 |   False    |
+The simulator output the following:
+
+|   params           | params description                       |  example   |
+| ------------------ | ---------------------------------------- | ---------- |
+| time(s)            | physical time                            |   0.46(s)  |
+| time_interval(s)   | duration in this cycle                   |   0.012(s) |  
+| send_data_size(bit)| The data size downloaded in this cycle   |   14871(b) |
+| frame_time_len(s)  | The time length of the frame currently   |   0.04(s)  |
+| rebuf(s)           | The rebuf time of this cycle             |   0.00(s)  |
+| buffer_size(s)     | The buffer size time length              |   1.26(s)  |
+| play_time_len(s)   | The time length of playing in this cycle |   0.012(s) |
+| end_delay(s)       | Current end-to-to delay                  |   1.31(s)  |
+| cdn_newest_id      | Cdn the newest frame id                  |   85       |
+| download_id        | Download frame id                        |   41       |
+| cdn_has_frame      | cdn cumulative frame info                |   1.31(s)  |
+| decision_flag      | Gop boundary flag or I frame flag        |   False    |
+| buffer_flag        | Whether the player is buffering          |   False    |
+| cdn_rebuf_flag     | Whether the cdn is rebuf                 |   False    |
+| end_of_video       | Whether the end of video                 |   False    |
         
 # Online
 * Setting
