@@ -95,27 +95,5 @@ Participants can configure the simulator by editing `run.py` and set the followi
 
 * The simulator can produce detailed log files for debugging.  To turn this on, set the variable `DEBUG` to `True`.  By default, the logs will be written to a sub-directory called `log`.  This log directory can be changed by setting the `LOG_FILE_PATH` variable.  Note that you may want to set `DEBUG` to `False` if you are training an AI model as large volume of data may be written to disk when logging is on.
 
-* You can set the variable `DRAW` to `True` to ask the simulator to output a plot of the downloaded bitrate, buffer occupancy, and network throughput.  An example plot is shown below.  
-                
-![Image text](https://github.com/NGnetLab/LiveStreamingDemo/blob/master/figure_1.png)
-
-        ```python
-           if DRAW:
-               ax = fig.add_subplot(311)
-               plt.ylabel("BIT_RATE")
-               plt.ylim(300,1000)
-               plt.plot(id_list,bit_rate_record,'-r')
-  
-               ax = fig.add_subplot(312)
-               plt.ylabel("Buffer_size")
-               plt.ylim(0,7)
-               plt.plot(id_list,buffer_record,'-b')
-  
-               ax = fig.add_subplot(313)
-               plt.ylabel("throughput")
-               plt.ylim(0,2500)
-               plt.plot(id_list,throughput_record,'-g')
-  
-               plt.draw()
-               plt.pause(0.01)
-         ```
+ 
+              
