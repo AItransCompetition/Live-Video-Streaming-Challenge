@@ -23,8 +23,6 @@ The simulator simulates a live video player，including downloading and playback
 2. A network trace, which contains the network throughput at each time instance.
 3. The bitrate control and latency control algorithm provided by participant.
 
-![Image text](https://github.com/NGnetLab/Live-Video-Streaming-Challenge/blob/master/frame.png)    
-
 The simulator output the following:
 
 |   params           | params description                       |  example   |
