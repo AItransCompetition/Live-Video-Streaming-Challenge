@@ -87,7 +87,7 @@ class Environment:
     def get_trace_id(self):
         return self.trace_idx
 
-    def get_video_frame(self, quality, target_buffer):
+    def get_video_frame(self, quality, target_buffer, latency_limit, publish):
 
         assert quality >= 0
         assert quality < BITRATE_LEVELS
@@ -102,6 +102,7 @@ class Environment:
         duration = 0                                                          # this loop 's time len
         current_new = 0
         global ADD_FRAME
+        latency_threshold = latency_limit
 
         if target_buffer == 0:
             quick_play_bound = 3
@@ -258,7 +259,8 @@ class Environment:
                 else:
                     ADD_FRAME =  self.newest_frame - self.video_chunk_counter
                     self.video_chunk_counter = self.newest_frame
-                rebuf += ADD_FRAME * FRAME_TIME_LEN
+                #rebuf += ADD_FRAME * FRAME_TIME_LEN
+                rebuf += publish
                 if self.Debug:
                     self.log_file.write("skip events: skip_download_frame, play_frame, new_download_frame, ADD_frame" + str(self.skip_time_frame) + " " + str(self.play_time_counter) + " " + str(self.video_chunk_counter) +" " +str(ADD_FRAME) + "\n")
             else:
@@ -347,7 +349,8 @@ class Environment:
                 else:
                     ADD_FRAME = self.newest_frame - self.video_chunk_counter
                     self.video_chunk_counter = self.newest_frame
-                rebuf += ADD_FRAME * FRAME_TIME_LEN
+                #rebuf += ADD_FRAME * FRAME_TIME_LEN
+                rebuf += publish
                 if self.Debug:
                     self.log_file.write("skip events: skip_download_frame, play_frame, new_download_frame, ADD_frame" + str(self.skip_time_frame) + " " + str(self.play_time_counter) +" " + str(self.video_chunk_counter) +" " +str(ADD_FRAME) + "\n")
             else:

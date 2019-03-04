@@ -72,6 +72,8 @@ def test(user_id):
     last_bit_rate = 0
     bit_rate = 0
     target_buffer = 0
+    latency_limit = 7 
+    publish = 4
 
     # QOE setting
     reward_frame = 0
@@ -93,7 +95,7 @@ def test(user_id):
     S_buffer_flag = [0] * past_frame_num
     S_cdn_flag = [0] * past_frame_num
     # params setting
-   
+     
     while True:
         reward_frame = 0
         # input the train steps
@@ -118,7 +120,7 @@ def test(user_id):
         time,time_interval, send_data_size, chunk_len,\
                rebuf, buffer_size, play_time_len,end_delay,\
                 cdn_newest_id, download_id, cdn_has_frame, decision_flag,\
-                buffer_flag, cdn_flag, end_of_video = net_env.get_video_frame(bit_rate,target_buffer)
+                buffer_flag, cdn_flag, end_of_video = net_env.get_video_frame(bit_rate,target_buffer, latency_limit, publish)
 
         # S_info is sequential order
         S_time_interval.pop(0)
