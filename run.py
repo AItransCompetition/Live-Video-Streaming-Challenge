@@ -161,7 +161,7 @@ def test(user_id):
             # if the buffer is enough ,choose the high quality
             # if the buffer is danger, choose the low  quality
             # if there is no rebuf ,choose the low target_buffer
-            bit_rate, target_buffer，latency_limit = abr.run(time,
+            bit_rate, target_buffer, latency_limit = abr.run(time,
                     S_time_interval,
                     S_send_data_size,
                     S_chunk_len,
