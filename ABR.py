@@ -44,8 +44,9 @@ class Algorithm:
          else:
              bit_rate = 1
          target_buffer = 1
+         latency_limit = 7
 
-         return bit_rate, target_buffer
+         return bit_rate, target_buffer, latency_limit
 
          # If you choose other
          #......
