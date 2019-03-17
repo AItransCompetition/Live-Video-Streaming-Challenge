@@ -15,8 +15,8 @@ Target_buffer = [2.0, 3.0]
 
 lamda = 1
 default_quality = 0
-latency_threshold = 7
-skip_add_frame = 100
+#latency_threshold = 3
+#skip_add_frame = 100
 ADD_FRAME = 0
 
 FPS = 25.0
@@ -87,7 +87,7 @@ class Environment:
     def get_trace_id(self):
         return self.trace_idx
 
-    def get_video_frame(self, quality, target_buffer, latency_limit, publish):
+    def get_video_frame(self, quality, target_buffer, latency_limit):
 
         assert quality >= 0
         assert quality < BITRATE_LEVELS
@@ -252,15 +252,24 @@ class Environment:
             if self.latency > latency_threshold and not self.skip_flag :
                 self.skip_flag = True
                 self.skip_time_frame = self.video_chunk_counter
-                if self.newest_frame > skip_add_frame + self.video_chunk_counter:
+                add_temp_frame = 0
+                while(1):
+                     if self.gop_flag[quality][self.video_chunk_counter + add_temp_frame ] == 1:
+                         break
+                     add_temp_frame += 1
+                     if self.video_chunk_counter + add_temp_frame > self.newest_frame:
+                         add_temp_frame = -1
+                         break
+                skip_add_frame = add_temp_frame
+                if self.newest_frame > skip_add_frame + self.video_chunk_counter and add_temp_frame != -1:
                     #ADD_FRAME = self.play_time_counter + skip_add_frame - self.video_chunk_counter
                     ADD_FRAME = skip_add_frame
                     self.video_chunk_counter = self.video_chunk_counter + skip_add_frame
                 else:
-                    ADD_FRAME =  self.newest_frame - self.video_chunk_counter
-                    self.video_chunk_counter = self.newest_frame
-                #rebuf += ADD_FRAME * FRAME_TIME_LEN
-                rebuf += publish
+                    ADD_Frame = 0
+                    #ADD_FRAME =  self.newest_frame - self.video_chunk_counter
+                    #self.video_chunk_counter = self.newest_frame
+                rebuf += ADD_FRAME * FRAME_TIME_LEN
                 if self.Debug:
                     self.log_file.write("skip events: skip_download_frame, play_frame, new_download_frame, ADD_frame" + str(self.skip_time_frame) + " " + str(self.play_time_counter) + " " + str(self.video_chunk_counter) +" " +str(ADD_FRAME) + "\n")
             else:
@@ -342,15 +351,24 @@ class Environment:
             if self.latency > latency_threshold and not self.skip_flag:
                 self.skip_flag = True
                 self.skip_time_frame = self.video_chunk_counter
-                if self.video_chunk_counter + skip_add_frame < self.newest_frame:
+                add_temp_frame = 0
+                while(1):
+                     if self.gop_flag[quality][self.video_chunk_counter + add_temp_frame ] == 1:
+                         break
+                     add_temp_frame += 1
+                     if self.video_chunk_counter + add_temp_frame > self.newest_frame:
+                         add_temp_frame = -1
+                         break
+                skip_add_frame = add_temp_frame
+                if self.newest_frame > skip_add_frame + self.video_chunk_counter and add_temp_frame != -1:
                     #ADD_FRAME = self.play_time_counter + skip_add_frame - self.video_chunk_counter
                     ADD_FRAME = skip_add_frame
                     self.video_chunk_counter = self.video_chunk_counter + skip_add_frame
                 else:
-                    ADD_FRAME = self.newest_frame - self.video_chunk_counter
-                    self.video_chunk_counter = self.newest_frame
-                #rebuf += ADD_FRAME * FRAME_TIME_LEN
-                rebuf += publish
+                    ADD_FRAME = 0
+                    #ADD_FRAME = self.newest_frame - self.video_chunk_counter
+                    #self.video_chunk_counter = self.newest_frame
+                rebuf += ADD_FRAME * FRAME_TIME_LEN
                 if self.Debug:
                     self.log_file.write("skip events: skip_download_frame, play_frame, new_download_frame, ADD_frame" + str(self.skip_time_frame) + " " + str(self.play_time_counter) +" " + str(self.video_chunk_counter) +" " +str(ADD_FRAME) + "\n")
             else:

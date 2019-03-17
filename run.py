@@ -120,7 +120,7 @@ def test(user_id):
         time,time_interval, send_data_size, chunk_len,\
                rebuf, buffer_size, play_time_len,end_delay,\
                 cdn_newest_id, download_id, cdn_has_frame, decision_flag,\
-                buffer_flag, cdn_flag, end_of_video = net_env.get_video_frame(bit_rate,target_buffer, latency_limit, publish)
+                buffer_flag, cdn_flag, end_of_video = net_env.get_video_frame(bit_rate,target_buffer, latency_limit)
 
         # S_info is sequential order
         S_time_interval.pop(0)
