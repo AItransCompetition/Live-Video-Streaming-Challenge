@@ -95,7 +95,7 @@ def test(user_id):
     S_buffer_flag = [0] * past_frame_num
     S_cdn_flag = [0] * past_frame_num
     # params setting
-     
+    call_time_sum = 0 
     while True:
         reward_frame = 0
         # input the train steps
@@ -117,12 +117,14 @@ def test(user_id):
         # buffer_flag    : If the True which means the video is rebuffing , client buffer is rebuffing, no play the video
         # cdn_flag       : If the True cdn has no frame to get 
         # end_of_video   : If the True ,which means the video is over.
+        cnt += 1
         timestamp_start = tm.time()
         time,time_interval, send_data_size, chunk_len,\
                rebuf, buffer_size, play_time_len,end_delay,\
                 cdn_newest_id, download_id, cdn_has_frame,skip_add_frame, decision_flag,\
                 buffer_flag, cdn_flag, skip_flag,end_of_video = net_env.get_video_frame(bit_rate,target_buffer, latency_limit)
         timestamp_end = tm.time()
+        call_time_sum += timestamp_end - timestamp_start
         # S_info is sequential order
         S_time_interval.pop(0)
         S_send_data_size.pop(0)
@@ -181,12 +183,13 @@ def test(user_id):
             # -------------------- End --------------------------------
             
         if end_of_video:
-            print("network trace", trace_count, reward_all)
+            print("network traceID, network_reward, avg_call_time", trace_count, reward_all, call_time_sum / cnt)
             reward_all_sum += reward_all
             trace_count += 1
             if trace_count > len(all_file_names):
                 break
             cnt = 0
+            call_time_sum = 0
             last_bit_rate = 0
             reward_all = 0
             bit_rate = 0
