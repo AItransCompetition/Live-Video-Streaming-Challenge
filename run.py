@@ -81,6 +81,7 @@ def test(user_id):
     SMOOTH_PENALTY= 0.02
     REBUF_PENALTY = 1.5
     LANTENCY_PENALTY = 0.005
+    SKIP_PENALTY = 0.5
     # past_info setting
     past_frame_num  = 7500
     S_time_interval = [0] * past_frame_num
@@ -121,7 +122,7 @@ def test(user_id):
         timestamp_start = tm.time()
         time,time_interval, send_data_size, chunk_len,\
                rebuf, buffer_size, play_time_len,end_delay,\
-                cdn_newest_id, download_id, cdn_has_frame,skip_add_frame, decision_flag,\
+                cdn_newest_id, download_id, cdn_has_frame,skip_frame_time_len, decision_flag,\
                 buffer_flag, cdn_flag, skip_flag,end_of_video = net_env.get_video_frame(bit_rate,target_buffer, latency_limit)
         timestamp_end = tm.time()
         call_time_sum += timestamp_end - timestamp_start
@@ -150,7 +151,7 @@ def test(user_id):
 
         # QOE setting 
         if not cdn_flag:
-            reward_frame = frame_time_len * float(BIT_RATE[bit_rate]) / 1000  - REBUF_PENALTY * rebuf - LANTENCY_PENALTY  * end_delay
+            reward_frame = frame_time_len * float(BIT_RATE[bit_rate]) / 1000  - REBUF_PENALTY * rebuf - LANTENCY_PENALTY  * end_delay - SKIP_PENALTY * skip_frame_time_len 
         else:
             reward_frame = -(REBUF_PENALTY * rebuf)
         if decision_flag or end_of_video:

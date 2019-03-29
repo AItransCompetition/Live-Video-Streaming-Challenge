@@ -212,7 +212,7 @@ class Environment:
                     self.newest_frame,                # cdn the newest frame id
                     (self.video_chunk_counter - 1),   # download_id
                     cdn_has_frame,                    # CDN_has_frame
-                    ADD_FRAME,                        # the num of skip frame 
+                    ADD_FRAME * FRAME_TIME_LEN,       # the num of skip frame 
                     self.decision,                    # Is_I frame edge
                     self.buffer_status,               # Is the buffer is buffering
                     True,                             # Is the CDN has no frame
@@ -272,7 +272,6 @@ class Environment:
                     ADD_Frame = 0
                     #ADD_FRAME =  self.newest_frame - self.video_chunk_counter
                     #self.video_chunk_counter = self.newest_frame
-                rebuf += ADD_FRAME * FRAME_TIME_LEN
                 if self.Debug:
                     self.log_file.write("skip events: skip_download_frame, play_frame, new_download_frame, ADD_frame" + str(self.skip_time_frame) + " " + str(self.play_time_counter) + " " + str(self.video_chunk_counter) +" " +str(ADD_FRAME) + "\n")
             else:
@@ -318,7 +317,7 @@ class Environment:
                     self.newest_frame,               # cdn the newest frame id
                     (self.video_chunk_counter - 1),  # download_id
                     cdn_has_frame,                   # CDN_has_frame
-                    ADD_FRAME,                       # the num of skip frame
+                    ADD_FRAME * FRAME_TIME_LEN,      # the num of skip frame
                     self.decision,                   # Is_I frame edge
                     self.buffer_status,              # Is the buffer is buffering
                     False,                           # Is the CDN has no frame
@@ -374,7 +373,6 @@ class Environment:
                     ADD_FRAME = 0
                     #ADD_FRAME = self.newest_frame - self.video_chunk_counter
                     #self.video_chunk_counter = self.newest_frame
-                rebuf += ADD_FRAME * FRAME_TIME_LEN
                 if self.Debug:
                     self.log_file.write("skip events: skip_download_frame, play_frame, new_download_frame, ADD_frame" + str(self.skip_time_frame) + " " + str(self.play_time_counter) +" " + str(self.video_chunk_counter) +" " +str(ADD_FRAME) + "\n")
             else:
@@ -420,7 +418,7 @@ class Environment:
                         self.newest_frame,                      # cdn the newest frame id
                         (self.video_chunk_counter - 1),         # download_id
                         cdn_has_frame,                          # CDN_has_frame
-                        ADD_FRAME,                              # the num of skip frame
+                        ADD_FRAME * FRAME_TIME_LEN,             # the num of skip frame
                         self.decision,                          # Is_I frame edge
                         self.buffer_status,                     # Is the buffer is buffering
                         False,                                  # Is the CDN has no frame
