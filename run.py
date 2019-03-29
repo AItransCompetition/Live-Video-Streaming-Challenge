@@ -6,7 +6,7 @@
 import fixed_env as fixed_env
 import load_trace as load_trace
 #import matplotlib.pyplot as plt
-import time
+import time as tm
 import ABR
 
 def test(user_id):
@@ -22,7 +22,7 @@ def test(user_id):
 
     # Turn on and off logging.  Set to 'True' to create log files.
     # Set to 'False' would speed up the simulator.
-    DEBUG = False
+    DEBUG = True
 
     # Control the subdirectory where log files will be stored.
     LOG_FILE_PATH = './log/'
@@ -117,11 +117,12 @@ def test(user_id):
         # buffer_flag    : If the True which means the video is rebuffing , client buffer is rebuffing, no play the video
         # cdn_flag       : If the True cdn has no frame to get 
         # end_of_video   : If the True ,which means the video is over.
+        timestamp_start = tm.time()
         time,time_interval, send_data_size, chunk_len,\
                rebuf, buffer_size, play_time_len,end_delay,\
-                cdn_newest_id, download_id, cdn_has_frame, decision_flag,\
-                buffer_flag, cdn_flag, end_of_video = net_env.get_video_frame(bit_rate,target_buffer, latency_limit)
-
+                cdn_newest_id, download_id, cdn_has_frame,skip_add_frame, decision_flag,\
+                buffer_flag, cdn_flag, skip_flag,end_of_video = net_env.get_video_frame(bit_rate,target_buffer, latency_limit)
+        timestamp_end = tm.time()
         # S_info is sequential order
         S_time_interval.pop(0)
         S_send_data_size.pop(0)

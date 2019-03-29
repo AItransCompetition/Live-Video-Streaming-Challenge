@@ -58,7 +58,6 @@ class Environment:
         # self.mahimahi_ptr = 1
         self.decision = False
         self.buffer_status = True
-        self.skip_flag = False
         self.skip_time_frame = 100000000
 
         # self.last_mahimahi_time = self.cooked_time[self.mahimahi_ptr - 1]
@@ -102,6 +101,7 @@ class Environment:
         duration = 0                                                          # this loop 's time len
         current_new = 0
         global ADD_FRAME
+        self.skip = False
         latency_threshold = latency_limit
 
         if target_buffer == 0:
@@ -152,10 +152,9 @@ class Environment:
 
             # calculate the play time , the real time ,the latency
                 # the normal play the frame
-                if self.skip_flag and self.play_time_counter >= self.skip_time_frame:
-                    self.play_time_counter += ADD_FRAME
+                if self.play_time_counter >= self.skip_time_frame:
+                    self.play_time_counter = self.skip_to_frame
                     self.play_time = self.play_time_counter * FRAME_TIME_LEN
-                    self.skip_flag = False
                     if self.Debug:
                         self.log_file.write("ADD_Frame" + str(ADD_FRAME) + "\n")
                     # print(ADD_FRAME)
@@ -213,9 +212,11 @@ class Environment:
                     self.newest_frame,                # cdn the newest frame id
                     (self.video_chunk_counter - 1),   # download_id
                     cdn_has_frame,                    # CDN_has_frame
+                    ADD_FRAME,                        # the num of skip frame 
                     self.decision,                    # Is_I frame edge
                     self.buffer_status,               # Is the buffer is buffering
                     True,                             # Is the CDN has no frame
+                    self.skip,                        # Is the events of skip frame
                     end_of_video]                     # Is the end of video
         else:
             the_newst_frame = self.video_chunk_counter
@@ -249,8 +250,7 @@ class Environment:
             self.play_time_counter = int(self.play_time/FRAME_TIME_LEN)
             self.latency = (self.newest_frame - self.video_chunk_counter) * FRAME_TIME_LEN + self.buffer_size
             # Debug Info
-            if self.latency > latency_threshold and not self.skip_flag :
-                self.skip_flag = True
+            if self.latency > latency_threshold :
                 self.skip_time_frame = self.video_chunk_counter
                 add_temp_frame = 0
                 while(1):
@@ -265,6 +265,9 @@ class Environment:
                     #ADD_FRAME = self.play_time_counter + skip_add_frame - self.video_chunk_counter
                     ADD_FRAME = skip_add_frame
                     self.video_chunk_counter = self.video_chunk_counter + skip_add_frame
+                    self.skip_to_frame = self.video_chunk_counter 
+                    self.latency = (self.newest_frame - self.video_chunk_counter) * FRAME_TIME_LEN + self.buffer_size
+                    self.skip = True
                 else:
                     ADD_Frame = 0
                     #ADD_FRAME =  self.newest_frame - self.video_chunk_counter
@@ -315,9 +318,11 @@ class Environment:
                     self.newest_frame,               # cdn the newest frame id
                     (self.video_chunk_counter - 1),  # download_id
                     cdn_has_frame,                   # CDN_has_frame
+                    ADD_FRAME,                       # the num of skip frame
                     self.decision,                   # Is_I frame edge
                     self.buffer_status,              # Is the buffer is buffering
                     False,                           # Is the CDN has no frame
+                    self.skip,                      # Is the events of skip frame
                     end_of_video]                    # Is the end of video
         # If not buffering
         elif not end_of_video:
@@ -334,10 +339,9 @@ class Environment:
                 self.buffer_size = 0
                 self.buffer_status = True
             # the normal play the frame
-            if self.skip_flag and self.play_time_counter >= self.skip_time_frame :
-                self.play_time_counter += ADD_FRAME
+            if  self.play_time_counter >= self.skip_time_frame :
+                self.play_time_counter = self.skip_to_frame
                 self.play_time = self.play_time_counter * FRAME_TIME_LEN
-                self.skip_flag = False
                 if self.Debug:
                     self.log_file.write("ADD_Frame" + str(ADD_FRAME) + "\n")
                 #print(ADD_FRAME)
@@ -348,8 +352,7 @@ class Environment:
             #play add the time
             self.buffer_size += self.gop_time_len[quality][self.video_chunk_counter]
             self.time += duration
-            if self.latency > latency_threshold and not self.skip_flag:
-                self.skip_flag = True
+            if self.latency > latency_threshold:
                 self.skip_time_frame = self.video_chunk_counter
                 add_temp_frame = 0
                 while(1):
@@ -364,6 +367,9 @@ class Environment:
                     #ADD_FRAME = self.play_time_counter + skip_add_frame - self.video_chunk_counter
                     ADD_FRAME = skip_add_frame
                     self.video_chunk_counter = self.video_chunk_counter + skip_add_frame
+                    self.skip_to_frame = self.video_chunk_counter 
+                    self.latency = (self.newest_frame - self.video_chunk_counter) * FRAME_TIME_LEN + self.buffer_size
+                    self.skip = True
                 else:
                     ADD_FRAME = 0
                     #ADD_FRAME = self.newest_frame - self.video_chunk_counter
@@ -414,9 +420,11 @@ class Environment:
                         self.newest_frame,                      # cdn the newest frame id
                         (self.video_chunk_counter - 1),         # download_id
                         cdn_has_frame,                          # CDN_has_frame
+                        ADD_FRAME,                              # the num of skip frame
                         self.decision,                          # Is_I frame edge
                         self.buffer_status,                     # Is the buffer is buffering
                         False,                                  # Is the CDN has no frame
+                        self.skip,                              # Is the events of skip frame
                         end_of_video]                           # Is the end of video
         # if the video is end
         if  end_of_video:
@@ -440,7 +448,6 @@ class Environment:
 
             self.decision = False
             self.buffer_status = True
-            self.skip_flag = False
             self.skip_time_frame = 100000000
             ADD_FRAME = 0
 
@@ -479,7 +486,9 @@ class Environment:
                         self.newest_frame,                      # cdn the newest frame id
                         (self.video_chunk_counter - 1),         # download_id
                         cdn_has_frame,                          # CDN_has_frame
+                        0,                                      #
                         self.decision,                          # Is_I frame edge
                         self.buffer_status,                     # Is the buffer is buffering
                         False,                                  # Is the CDN has no frame
+                        False,                                  # Is the envents of skip frame
                         True]                                   # Is the end of video
