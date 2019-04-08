@@ -42,6 +42,7 @@ def test(user_id):
     FPS = 25
     frame_time_len = 0.04
     reward_all_sum = 0
+    run_time = 0
     #init 
     #setting one:
     #     1,all_cooked_time : timestamp
@@ -186,6 +187,7 @@ def test(user_id):
         if end_of_video:
             print("network traceID, network_reward, avg_call_time", trace_count, reward_all, call_time_sum / cnt)
             reward_all_sum += reward_all
+            run_time += call_time_sum / cnt
             trace_count += 1
             if trace_count > len(all_file_names):
                 break
@@ -210,7 +212,7 @@ def test(user_id):
             
         reward_all += reward_frame
 
-    return reward_all_sum / trace_count
+    return [reward_all_sum / trace_count, run_time / trace_count]
 
 a = test("aaa")
 print(a)
