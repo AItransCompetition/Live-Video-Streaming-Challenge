@@ -8,6 +8,7 @@ import load_trace as load_trace
 #import matplotlib.pyplot as plt
 import time as tm
 import ABR
+import os
 
 def test(user_id):
 
@@ -26,6 +27,10 @@ def test(user_id):
 
     # Control the subdirectory where log files will be stored.
     LOG_FILE_PATH = './log/'
+    
+    # create result directory
+    if not os.path.exists(LOG_FILE_PATH):
+        os.makedirs(LOG_FILE_PATH)
 
     # -- End Configuration --
     # You shouldn't need to change the rest of the code here.
