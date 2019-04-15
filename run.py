@@ -101,6 +101,7 @@ def test(user_id):
     S_decision_flag = [0] * past_frame_num
     S_buffer_flag = [0] * past_frame_num
     S_cdn_flag = [0] * past_frame_num
+    S_skip_time = [0] * past_frame_num
     # params setting
     call_time_sum = 0 
     while True:
@@ -143,6 +144,7 @@ def test(user_id):
         S_decision_flag.pop(0)
         S_buffer_flag.pop(0)
         S_cdn_flag.pop(0)
+        S_skip_time.pop(0)
 
         S_time_interval.append(time_interval)
         S_send_data_size.append(send_data_size)
@@ -153,7 +155,8 @@ def test(user_id):
         S_play_time_len.append(play_time_len)
         S_decision_flag.append(decision_flag)
         S_buffer_flag.append(buffer_flag)
-        S_cdn_flag.append(cdn_flag)        
+        S_cdn_flag.append(cdn_flag) 
+        S_skip_time.append(skip_frame_time_len)
 
         # QOE setting 
         if not cdn_flag:
@@ -181,7 +184,8 @@ def test(user_id):
                     S_end_delay,
                     S_decision_flag,
                     S_buffer_flag,
-                    S_cdn_flag, 
+                    S_cdn_flag,
+                    S_skip_time,
                     end_of_video, 
                     cdn_newest_id, 
                     download_id,
