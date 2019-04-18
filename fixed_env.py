@@ -268,6 +268,7 @@ class Environment:
                     self.skip_to_frame = self.video_chunk_counter 
                     self.latency = (self.newest_frame - self.video_chunk_counter) * FRAME_TIME_LEN + self.buffer_size
                     self.skip = True
+                    self.decision = True
                 else:
                     ADD_Frame = 0
                     #ADD_FRAME =  self.newest_frame - self.video_chunk_counter
@@ -369,6 +370,7 @@ class Environment:
                     self.skip_to_frame = self.video_chunk_counter 
                     self.latency = (self.newest_frame - self.video_chunk_counter) * FRAME_TIME_LEN + self.buffer_size
                     self.skip = True
+                    self.decision = True
                 else:
                     ADD_FRAME = 0
                     #ADD_FRAME = self.newest_frame - self.video_chunk_counter
