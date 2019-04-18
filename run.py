@@ -16,7 +16,7 @@ def test(user_id):
     # Edit these variables to configure the simulator
 
     # Change which set of network trace to use: 'fixed' 'low' 'medium' 'high'
-    NETWORK_TRACE = 'fixed'
+    NETWORK_TRACE = 'high'
 
     # Change which set of video trace to use.
     VIDEO_TRACE = 'AsianCup_China_Uzbekistan'
@@ -197,9 +197,9 @@ def test(user_id):
             print("network traceID, network_reward, avg_call_time", trace_count, reward_all, call_time_sum / cnt)
             reward_all_sum += reward_all
             run_time += call_time_sum / cnt
-            trace_count += 1
-            if trace_count > len(all_file_names):
+            if trace_count >= len(all_file_names):
                 break
+            trace_count += 1
             cnt = 0
             call_time_sum = 0
             last_bit_rate = 0
