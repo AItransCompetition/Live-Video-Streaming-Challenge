@@ -125,14 +125,10 @@ def test(user_id):
         # buffer_flag    : If the True which means the video is rebuffing , client buffer is rebuffing, no play the video
         # cdn_flag       : If the True cdn has no frame to get 
         # end_of_video   : If the True ,which means the video is over.
-        cnt += 1
-        timestamp_start = tm.time()
         time,time_interval, send_data_size, chunk_len,\
                rebuf, buffer_size, play_time_len,end_delay,\
                 cdn_newest_id, download_id, cdn_has_frame,skip_frame_time_len, decision_flag,\
                 buffer_flag, cdn_flag, skip_flag,end_of_video = net_env.get_video_frame(bit_rate,target_buffer, latency_limit)
-        timestamp_end = tm.time()
-        call_time_sum += timestamp_end - timestamp_start
         # S_info is sequential order
         S_time_interval.pop(0)
         S_send_data_size.pop(0)
@@ -174,6 +170,8 @@ def test(user_id):
             # if the buffer is enough ,choose the high quality
             # if the buffer is danger, choose the low  quality
             # if there is no rebuf ,choose the low target_buffer
+            cnt += 1
+            timestamp_start = tm.time()
             bit_rate, target_buffer, latency_limit = abr.run(time,
                     S_time_interval,
                     S_send_data_size,
@@ -191,6 +189,8 @@ def test(user_id):
                     download_id,
                     cdn_has_frame,
                     abr_init)
+            timestamp_end = tm.time()
+            call_time_sum += timestamp_end - timestamp_start
             # -------------------- End --------------------------------
             
         if end_of_video:
