@@ -58,30 +58,31 @@ python run.py
 The given default code should produce something like the following:
 
 ```
-network trace 1 -1160.3892885566877
-network trace 2 754.6778329758246
-network trace 3 1563.6019626338486
-network trace 4 -134.73628719562478
-network trace 5 697.5516669070091
-network trace 6 -749.3520074196668
-network trace 7 1632.1595894295158
-network trace 8 1730.894881578582
-network trace 9 1742.9131512235235
-network trace 10 1377.708384556738
-network trace 11 2604.5443832171327
-network trace 12 1503.0123339929692
-network trace 13 1182.3120188716962
-network trace 14 103.31676372570564
-network trace 15 1738.4296243574768
-network trace 16 1376.159009667083
-network trace 17 1742.6122824271592
-network trace 18 1005.8552370641194
-network trace 19 1526.3693699344235
-network trace 20 2205.3716390914174
-1068.7148832610592
+network traceID, network_reward, avg_running_time 1 1352.0162385703647 2.6768960660546604e-06
+network traceID, network_reward, avg_running_time 2 1369.6498845601943 1.7594162136067256e-06
+network traceID, network_reward, avg_running_time 3 1424.1866612345154 1.7338476473242459e-06
+network traceID, network_reward, avg_running_time 4 1283.078401733983 1.6881894932483895e-06
+network traceID, network_reward, avg_running_time 5 1431.9056303686343 1.736504121743205e-06
+network traceID, network_reward, avg_running_time 6 1336.4567676353715 1.802085833961253e-06
+network traceID, network_reward, avg_running_time 7 1422.2614517244535 1.7979350926816296e-06
+network traceID, network_reward, avg_running_time 8 1343.4732742884667 1.770706229887301e-06
+network traceID, network_reward, avg_running_time 9 1422.6834159560547 1.6881894932483895e-06
+network traceID, network_reward, avg_running_time 10 1320.6092354238306 1.7544353240711776e-06
+network traceID, network_reward, avg_running_time 11 1375.1834048004598 1.7155843856939035e-06
+network traceID, network_reward, avg_running_time 12 1325.1692162039294 1.8302571898138067e-06
+network traceID, network_reward, avg_running_time 13 1408.3942550208378 1.6885215525507595e-06
+network traceID, network_reward, avg_running_time 14 1203.2877950641343 1.7167465932521979e-06
+network traceID, network_reward, avg_running_time 15 1402.5958404064256 1.7351758845337253e-06
+network traceID, network_reward, avg_running_time 16 1325.0882620208095 1.8970547944390343e-06
+network traceID, network_reward, avg_running_time 17 1403.0285174814185 1.8051692417689732e-06
+network traceID, network_reward, avg_running_time 18 1313.5680543047313 1.7504506124427393e-06
+network traceID, network_reward, avg_running_time 19 1297.0031906126276 1.7051245176692527e-06
+network traceID, network_reward, avg_running_time 20 1395.751751267894 1.7599143025602802e-06
+[1357.769562433957, 1.8006102295275824e-06]
+
 ```
 
-The output above shows the resulting QoE value for each of the 20 runs, each using a different network trace.  The last line shows the average QoE for all 20 runs.
+The output above shows the resulting QoE value and your ABR algorithm's average running time for each of the 20 runs, each using a different network trace.  The last line shows the average QoE and average running time for all 20 runs.
 
 ## Configuring the Simulator
 
