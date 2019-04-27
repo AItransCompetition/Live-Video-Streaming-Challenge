@@ -85,7 +85,7 @@ def test(user_id):
     reward_all = 0
     SMOOTH_PENALTY= 0.02
     REBUF_PENALTY = 1.85
-    LANTENCY_PENALTY = 0.05
+    LANTENCY_PENALTY = 0.005
     SKIP_PENALTY = 1.85
     # past_info setting
     past_frame_num  = 7500
@@ -158,7 +158,6 @@ def test(user_id):
         if end_delay <=1.0:
             LANTENCY_PENALTY = 0.005
         else:
-            #LANTENCY_PENALTY = 5**(end_delay-1)/1000
             LANTENCY_PENALTY = 0.01
             
         if not cdn_flag:
