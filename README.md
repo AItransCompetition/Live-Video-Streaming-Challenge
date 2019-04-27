@@ -58,27 +58,27 @@ python run.py
 The given default code should produce something like the following:
 
 ```
-network traceID, network_reward, avg_running_time 1 1352.0162385703647 2.6768960660546604e-06
-network traceID, network_reward, avg_running_time 2 1369.6498845601943 1.7594162136067256e-06
-network traceID, network_reward, avg_running_time 3 1424.1866612345154 1.7338476473242459e-06
-network traceID, network_reward, avg_running_time 4 1283.078401733983 1.6881894932483895e-06
-network traceID, network_reward, avg_running_time 5 1431.9056303686343 1.736504121743205e-06
-network traceID, network_reward, avg_running_time 6 1336.4567676353715 1.802085833961253e-06
-network traceID, network_reward, avg_running_time 7 1422.2614517244535 1.7979350926816296e-06
-network traceID, network_reward, avg_running_time 8 1343.4732742884667 1.770706229887301e-06
-network traceID, network_reward, avg_running_time 9 1422.6834159560547 1.6881894932483895e-06
-network traceID, network_reward, avg_running_time 10 1320.6092354238306 1.7544353240711776e-06
-network traceID, network_reward, avg_running_time 11 1375.1834048004598 1.7155843856939035e-06
-network traceID, network_reward, avg_running_time 12 1325.1692162039294 1.8302571898138067e-06
-network traceID, network_reward, avg_running_time 13 1408.3942550208378 1.6885215525507595e-06
-network traceID, network_reward, avg_running_time 14 1203.2877950641343 1.7167465932521979e-06
-network traceID, network_reward, avg_running_time 15 1402.5958404064256 1.7351758845337253e-06
-network traceID, network_reward, avg_running_time 16 1325.0882620208095 1.8970547944390343e-06
-network traceID, network_reward, avg_running_time 17 1403.0285174814185 1.8051692417689732e-06
-network traceID, network_reward, avg_running_time 18 1313.5680543047313 1.7504506124427393e-06
-network traceID, network_reward, avg_running_time 19 1297.0031906126276 1.7051245176692527e-06
-network traceID, network_reward, avg_running_time 20 1395.751751267894 1.7599143025602802e-06
-[1357.769562433957, 1.8006102295275824e-06]
+network traceID, network_reward, avg_running_time 1 641.1484318760413 2.7569223579257976e-06
+network traceID, network_reward, avg_running_time 2 985.7361064180305 1.569810351953533e-06
+network traceID, network_reward, avg_running_time 3 1434.0326303686352 1.506220995549704e-06
+network traceID, network_reward, avg_running_time 4 909.2318048157695 1.5385812629050623e-06
+network traceID, network_reward, avg_running_time 5 635.4616496246817 2.8796182701514625e-06
+network traceID, network_reward, avg_running_time 6 1019.0324002078656 3.573290152802109e-06
+network traceID, network_reward, avg_running_time 7 991.7406496996467 4.670511970121271e-06
+network traceID, network_reward, avg_running_time 8 1055.3980756167875 3.7547605615472396e-06
+network traceID, network_reward, avg_running_time 9 -163.7251464104959 3.7670135498046877e-06
+network traceID, network_reward, avg_running_time 10 460.11141008945896 1.8877298097065138e-06
+network traceID, network_reward, avg_running_time 11 1586.2008041285537 1.5093755589222177e-06
+network traceID, network_reward, avg_running_time 12 1028.6844963417639 1.4955950978738685e-06
+network traceID, network_reward, avg_running_time 13 1021.9785822724941 1.5320970756073211e-06
+network traceID, network_reward, avg_running_time 14 963.8776511160278 2.4441224950933854e-06
+network traceID, network_reward, avg_running_time 15 81.1547975421813 3.175536099211264e-06
+network traceID, network_reward, avg_running_time 16 -19.11784167374209 2.672614120855564e-06
+network traceID, network_reward, avg_running_time 17 1202.1056307541305 2.4344927753246596e-06
+network traceID, network_reward, avg_running_time 18 442.34703880371285 3.3536329242844434e-06
+network traceID, network_reward, avg_running_time 19 1009.585542619389 2.43250041951044e-06
+network traceID, network_reward, avg_running_time 20 -307.0479419414425 2.85270988858062e-06
+[748.8968386134745, 2.5903567868865584e-06]
 
 ```
 
