@@ -1,6 +1,6 @@
 import tensorflow as tf
 
-#NN_MODEL = "/home/team/"$YOUR TEAM NAME"/submit/results/nn_model_ep_18200.ckpt" # model path settings
+#NN_MODEL = "/home/team/"YOUR TEAM NAME"/submit/results/nn_model_ep_18200.ckpt" # model path settings
 
 class Algorithm:
      def __init__(self):
