@@ -16,7 +16,7 @@ def test(user_id):
     # Edit these variables to configure the simulator
 
     # Change which set of network trace to use: 'fixed' 'low' 'medium' 'high'
-    NETWORK_TRACE = 'medium'
+    NETWORK_TRACE = 'fixed'
 
     # Change which set of video trace to use.
     VIDEO_TRACE = 'AsianCup_China_Uzbekistan'
@@ -86,7 +86,7 @@ def test(user_id):
     SMOOTH_PENALTY= 0.02
     REBUF_PENALTY = 1.85
     LANTENCY_PENALTY = 0.005
-    SKIP_PENALTY = 1.85
+    SKIP_PENALTY = 0.5
     # past_info setting
     past_frame_num  = 7500
     S_time_interval = [0] * past_frame_num
