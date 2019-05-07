@@ -58,8 +58,9 @@ class Environment:
         # self.mahimahi_ptr = 1
         self.decision = False
         self.buffer_status = True
-        self.skip_time_frame = 100000000
+        self.skip_time_frame = 1000000000
         self.add_frame = 0
+        self.skip_to_frame = self.skip_time_frame
 
         # self.last_mahimahi_time = self.cooked_time[self.mahimahi_ptr - 1]
         self.video_size = {}  # in bytes
@@ -436,9 +437,10 @@ class Environment:
 
             self.decision = False
             self.buffer_status = True
-            self.skip_time_frame = 100000000
+            self.skip_time_frame = 1000000000
             self.next_I_frame = 50
             self.add_frame = 0
+            self.skip_to_frame = self.skip_time_frame
 
             self.video_size = {}  # in bytes
             self.cdn_arrive_time = {}
