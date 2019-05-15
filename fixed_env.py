@@ -11,7 +11,7 @@ VIDEO_CHUNCK_LEN = 2000.0  # millisec, every time add this amount to buffer
 BITRATE_LEVELS = 4
 BUFFER_LEVELS = 2
 CHUNK_TIME_LEN = 2
-Target_buffer = [2.0, 3.0]
+Target_buffer = [0.5, 1.0]
 
 lamda = 1
 default_quality = 0
