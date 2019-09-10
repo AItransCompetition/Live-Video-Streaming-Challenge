@@ -19,6 +19,6 @@ The client can only switch to a different representation on an I-frame.
 Four network traces are provided.  The network traces corresponds to measured throughput under different network conditions using WiFi and LTE.  The traces are named `fixed`, `low`, `medium`, `high` respectively.  Each network trace is a text file containing multiple lines.  Each line contains two floating point numbers:
 
 - The first corresponds to the timestamp in seconds.
-- The second corresponds to the measured throughput in kbps.
+- The second corresponds to the measured throughput in Mbps.
 
 These dataset are read and processed in the file `fixed_env.py`. 
