@@ -1,7 +1,7 @@
 # import tensorflow as tf
 
 #NN_MODEL = "./submit/results/nn_model_ep_18200.ckpt" # model path settings
-TARGET_BUFFER = [2.0 , 3.0]
+TARGET_BUFFER = [0.5 , 1.0]
 class Algorithm:
      def __init__(self):
      # fill your self params
