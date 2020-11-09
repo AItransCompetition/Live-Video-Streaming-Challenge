@@ -4,7 +4,7 @@ There are two datasets provided for this grand challenge.
 
 ### Video Trace
 
-This dataset contains frame-level traces of six video sequences encoded with IPPP frame structure.  Traces for each video sequence is stored under a subdirectory.  There are four representations for each video sequence.  The trace for each representation is stored in the files `frame_trace_0` to `frame_trace_4`. 
+This dataset contains frame-level traces of six video sequences encoded with IPPP frame structure.  Traces for each video sequence is stored under a subdirectory.  There are four representations for each video sequence.  The trace for each representation is stored in the files `frame_trace_0` to `frame_trace_3`. 
 
 The traces are stored in text format, with each line corresponds to a frame in the representation of the video.  A line contains three numbers:
 
