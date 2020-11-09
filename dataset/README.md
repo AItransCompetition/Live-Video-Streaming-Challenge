@@ -1,4 +1,4 @@
-# ACM Multimedia 2019 Live Video Stremaing Grand Challenge 
+# ACM Multimedia 2019 Live Video Streaming Grand Challenge 
 ## Dataset
 There are two datasets provided for this grand challenge. 
 
